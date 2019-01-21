@@ -10,7 +10,7 @@ class TodoItem extends Component {
             date: todo.date,
             completed: todo.completed,
             description: todo.description,
-            showDescription: true,
+            showDescription: false,
         }
     }
 
