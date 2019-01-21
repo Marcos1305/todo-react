@@ -15,7 +15,8 @@ class Form extends Component {
         this.setState({
             name: '',
             description: '',
-            date: ''
+            date: '',
+            completed: false,
         });
     }
     render() {

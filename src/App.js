@@ -9,18 +9,19 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            todos: [
-                {
-                    name: 'Limpar Computador',
-                    description: 'Não esquecer de limpar o cooler',
-                    date: '20/01/2019'
-                }
-            ]
-        }
+            todos: localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : []
+        }  
     }
     addTodo(todo) {
-        this.setState({todos: [...this.state.todos, todo]})
+        this.setState({todos: [...this.state.todos, todo]}, () => {
+            localStorage.setItem('todos', JSON.stringify(this.state.todos));
+        });
     }
+
+    componentWillMount() {
+        localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+
     render() {
         return (
             <div className='container'>
