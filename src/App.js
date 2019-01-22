@@ -10,7 +10,9 @@ class App extends Component {
         super();
         this.state = {
             todos: localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : []
-        }  
+        }
+        
+        this.limparTodos = this.limparTodos.bind(this);
     }
     addTodo(todo) {
         this.setState({todos: [...this.state.todos, todo]}, () => {
@@ -22,11 +24,19 @@ class App extends Component {
         localStorage.setItem('todos', JSON.stringify(this.state.todos));
     }
 
+    limparTodos() {
+        if(window.confirm("Tem certeza que deseja realizar essa ação?")){
+            this.setState({todos: []}, () => {
+                localStorage.setItem('todos', []);
+            });
+        }
+    }
+
     render() {
         return (
             <div className='container'>
                 <Form addTodo={(todoProps) => this.addTodo(todoProps)}/>
-                {!!this.state.todos.length && <TodoList todos={this.state.todos}/>}
+                {!!this.state.todos.length && <TodoList todos={this.state.todos} limparTodos={this.limparTodos}/>}
             </div>
         )
     }

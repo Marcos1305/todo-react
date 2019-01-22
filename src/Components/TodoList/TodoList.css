@@ -14,3 +14,15 @@
     font-size: 16px;
     color: #fff;
 }
+
+.btn-limpar-todos {
+    font-family: 'Roboto';
+    border: unset;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #F54142;
+    background-color: #090936;
+    font-size: 15px;
+}

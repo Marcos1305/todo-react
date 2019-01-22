@@ -19,6 +19,14 @@ class Form extends Component {
             completed: false,
         });
     }
+    
+    validarDadosForm() {
+        if(this.state.name || this.state.description)
+            return true;
+            
+        return false;
+    }
+
     render() {
         return (
             <form>
@@ -43,8 +51,10 @@ class Form extends Component {
             <div className='form-group'>
                 <button className='btn-salvar' onClick={(e) => {
                     e.preventDefault();
-                    this.props.addTodo(this.state);
-                    this.limparForm();
+                    if(this.validarDadosForm()){
+                        this.props.addTodo(this.state);
+                        this.limparForm();
+                    }
                 }}>Salvar</button>
             </div>
         </form>

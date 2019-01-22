@@ -1,4 +1,5 @@
 import React,  { Component } from 'react';
+import moment from 'moment';
 
 import './TodoItem.css';
 
@@ -22,7 +23,11 @@ class TodoItem extends Component {
                         this.setState({completed: !this.state.completed })
                     }}/>
                     <span onClick={() => this.setState({showDescription: true})} >{ this.state.name }</span>
-                    <span>{ this.state.date }</span>
+                    <span>{
+                        this.state.date.length === 10 
+                        ? moment(this.state.date, 'YYYY-MM-DD').format('DD/MM/YYYY')
+                        : this.state.date
+                    }</span>
                 </div>
             )    
             : (
